@@ -2,16 +2,19 @@
 #
 # Version 0.2
 
-FROM pietervandereems/armhf-debian:testing
+#FROM pietervandereems/armhf-debian:testing
+FROM pietervandereems/armhf-debian:17.03-testing
 MAINTAINER Pieter van der Eems
 
 VOLUME /data
 VOLUME /config
 
 # Update packages and install software
+RUN echo "deb http://ppa.launchpad.net/jcfp/ppa/ubuntu xenial main" | tee -a /etc/apt/sources.list
+RUN echo "deb http://ppa.launchpad.net/jcfp/sab-addons/ubuntu xenial main" | tee -a /etc/apt/sources.list
 RUN apt-get update \
-    && apt-get install -t testing -y sabnzbdplus par2 unrar \
-    && apt-get install -y openvpn curl procps\
+    && apt-get install -y --allow-unauthenticated sabnzbdplus par2 unrar python-sabyenc\
+    && apt-get install -y --allow-unauthenticated openvpn curl procps\
     && curl -sLO https://archive.raspbian.org/raspbian/pool/main/d/dumb-init/dumb-init_1.0.3-1_armhf.deb \
     && dpkg -i dumb-init_*.deb \
     && rm -rf dumb-init_*.deb \
