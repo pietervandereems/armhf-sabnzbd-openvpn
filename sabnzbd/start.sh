@@ -27,7 +27,7 @@
 echo "Starting sabnzbd"
 echo /usr/bin/python /usr/bin/sabnzbdplus --daemon --config-file /etc/sabnzbd/sabnzbd.ini --server `/bin/hostname --ip-addres`:8080
 export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-EXPORT LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
 #exec /usr/bin/python /usr/bin/sabnzbdplus --deamon -f /etc/sabnzbd/sabnzbd.ini --server `/bin/hostname --ip-addres`:8080 
 exec /usr/bin/python /usr/bin/sabnzbdplus --daemon --config-file /etc/sabnzbd/sabnzbd.ini --server `/bin/hostname --ip-addres`:8080
 
